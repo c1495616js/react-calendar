@@ -1,5 +1,24 @@
-import React from 'react';
+import '@/styles/index.scss';
+import React, { ReactElement } from 'react';
 import ReactDOM from 'react-dom';
-import Test from '@/components/Test';
-ReactDOM.render(<Test test="test" />, document.getElementById('root'));
+import styled from '@emotion/styled';
 
+import Calendar from '@/components/Calendar';
+
+const Container = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+function App(): ReactElement {
+  return (
+    <Container>
+      <h1>Simple Calendar</h1>
+      <Calendar />
+    </Container>
+  );
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
