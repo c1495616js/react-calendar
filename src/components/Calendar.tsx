@@ -28,12 +28,14 @@ const Body = styled.div`
 `;
 
 const Day = styled.div`
+  position: relative;
   width: 14.2%;
-  height: 40px;
+  padding-top: 14.2%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  border-radius: 50%;
 
   ${(props: any): any =>
     props.isToday &&
@@ -46,6 +48,17 @@ const Day = styled.div`
     css`
       background-color: #eee;
     `}
+`;
+
+const DayChild = styled.div`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 `;
 
 export default function Test(): ReactElement {
@@ -72,19 +85,24 @@ export default function Test(): ReactElement {
   const [day, setDay] = useState(date.getDate());
   const [month, setMonth] = useState(date.getMonth());
   const [year, setYear] = useState(date.getFullYear());
+  // eslint-disable-next-line @typescript-eslint/no-use-before-define
   const [startDay, setStartDay] = useState(getStartDayOfMonth(date));
 
   useEffect(() => {
     setDay(date.getDate());
     setMonth(date.getMonth());
     setYear(date.getFullYear());
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     setStartDay(getStartDayOfMonth(date));
   }, [date]);
 
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   function getStartDayOfMonth(date: Date) {
-    return new Date(date.getFullYear(), date.getMonth(), 1).getDay();
+    const startDay = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
+    return startDay > 0 ? startDay : 7;
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   function isLeapYear(year: number) {
     return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
   }
@@ -108,22 +126,25 @@ export default function Test(): ReactElement {
 
       {/* Body */}
       <Body>
+        {/* Mon, Tue... */}
         {DAYS_OF_THE_WEEK.map((d) => (
           <Day key={d}>
             <strong>{d}</strong>
           </Day>
         ))}
-        {Array(days[month] + (startDay - 1))
+
+        {/* days */}
+        {Array(days[month] + (startDay - 1)) // calculate how many slots
           .fill(null)
           .map((_, index) => {
             const d = index - (startDay - 2);
             return (
               <Day
-                key={index}
+                key={`day-${index}`}
                 isToday={d === today.getDate()}
                 isSelected={d === day}
                 onClick={() => setDate(new Date(year, month, d))}>
-                {d > 0 ? d : ''}
+                <DayChild>{d > 0 ? d : ''}</DayChild>
               </Day>
             );
           })}
