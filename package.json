@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://c1495616js.github.io/react-calendar",
+  "homepage": "https://c1495616js.github.io/react-calendar/",
   "scripts": {
     "start": "webpack-dev-server --env=development",
     "build": "webpack --env=production",
