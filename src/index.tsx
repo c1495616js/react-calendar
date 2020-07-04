@@ -3,7 +3,7 @@ import React, { ReactElement } from 'react';
 import ReactDOM from 'react-dom';
 import styled from '@emotion/styled';
 
-import Calendar from '@/components/Calendar';
+import Calendar from '@/pages/Calendar';
 
 const Container = styled.div`
   height: 100%;
