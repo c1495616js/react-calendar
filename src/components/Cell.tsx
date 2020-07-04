@@ -43,7 +43,7 @@ export default function Cell({
       return (
         <Day
           key={key}
-          isToday={isDateEqual(d, currentDate)}
+          isToday={isDateEqual(d, new Date())}
           isSelected={isDateEqual(d, selectedDate)}
           onClick={() => setSelectedDate(d)}>
           <DayChild>{day}</DayChild>
