@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
@@ -10,10 +10,6 @@ const Frame = styled.div`
   width: 400px;
   border: 1px solid lightgrey;
   box-shadow: 2px 2px 2px #eee;
-`;
-
-const Button = styled.div`
-  cursor: pointer;
 `;
 
 const Body = styled.div`
@@ -53,6 +49,8 @@ export default function Calendar(): ReactElement {
     <Frame>
       {/* Header */}
       <Header currentDate={currentDate} setCurrentDate={setCurrentDate} />
+
+      {/* Body */}
       <Body>
         <Weekday Day={Day} />
         <Cell
