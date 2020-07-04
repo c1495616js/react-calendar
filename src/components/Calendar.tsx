@@ -141,7 +141,11 @@ export default function Test(): ReactElement {
             return (
               <Day
                 key={`day-${index}`}
-                isToday={d === today.getDate()}
+                isToday={
+                  d === today.getDate() &&
+                  month === today.getMonth() &&
+                  year === today.getFullYear()
+                }
                 isSelected={d === day}
                 onClick={() => setDate(new Date(year, month, d))}>
                 <DayChild>{d > 0 ? d : ''}</DayChild>
