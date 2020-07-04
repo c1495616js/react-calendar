@@ -73,7 +73,7 @@ https://github.com/basarat/typescript-book/blob/master/docs/testing/jest.md
 
 ## MISC
 
-### trailling comma
+### trailing comma
 
 https://medium.com/@nikgraf/why-you-should-enforce-dangling-commas-for-multiline-statements-d034c98e36f8
 
@@ -88,4 +88,8 @@ in `tsconfig.json`:
 
 ## Good Ref:
 
-https://www.sitepoint.com/react-with-typescript-best-practices/
+- https://www.sitepoint.com/react-with-typescript-best-practices/
+
+### Github Actions
+
+- https://dev.to/pierresaid/deploy-node-projects-to-github-pages-with-github-actions-4jco
